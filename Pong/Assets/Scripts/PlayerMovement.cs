@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position = new Vector2(transform.position.x, Mathf.Clamp(transform.position.y, -6.985001f, 6.985001f));
 
-        if (playerNumber == 3)
-            transform.Translate = Vector2.MoveTowards(Vector2, Vector2);
+        //if (playerNumber == 3)
+        //    transform.Translate = Vector2.MoveTowards(Vector2, Vector2);
  }
 
 }
