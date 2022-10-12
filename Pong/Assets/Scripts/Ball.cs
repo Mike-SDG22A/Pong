@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     private float MoveSpeedIncrease = 1.1f;
     private Vector2 BallDirection;
     private float DefaultMoveSpeed = 20f;
+    public ParticleSystem collisionParticleSystem;
 
     void Start()
     {
@@ -26,31 +27,59 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D Collision) 
     {
+        var em = collisionParticleSystem.emission;
+
         if (Collision.gameObject.CompareTag("Wall"))
         {
             BallDirection = Vector2.Reflect(BallDirection, Collision.contacts[0].normal);
+            em.enabled = true;
+            collisionParticleSystem.Play();
         }
         if (Collision.gameObject.CompareTag("Paddle"))
         {
             BallDirection = Vector2.Reflect(BallDirection, Collision.contacts[0].normal);
+            em.enabled = true;
+            collisionParticleSystem.Play();
             MoveSpeed = MoveSpeed * MoveSpeedIncrease;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("AiTrigger")) 
+        {
+            AI.AiOn = true;
+        }
+        if (collision.gameObject.CompareTag("AiTrigger2"))
+        {
+            AI2.AiOn2 = true;
+        }
         if (collision.gameObject.CompareTag("LeftBarrier")) 
         {
             ResetBall();
             GameObject.Find("Canvas").GetComponent<ScoreScript>().AddP2Score();
+            GameObject.Find("Canvas").GetComponent<ScoreScript>().AddTotalScore();
         }
         if (collision.gameObject.CompareTag("RightBarrier"))
         {
             ResetBall();
             GameObject.Find("Canvas").GetComponent<ScoreScript>().AddP1Score();
+            GameObject.Find("Canvas").GetComponent<ScoreScript>().AddTotalScore();
         }
         if (collision.gameObject.CompareTag("Barrier"))
         {
             ResetBall();
+    
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("AiTrigger"))
+        {
+            AI.AiOn = false;
+        }
+        if (collision.gameObject.CompareTag("AiTrigger2"))
+        {
+            AI2.AiOn2 = false;
         }
     }
 

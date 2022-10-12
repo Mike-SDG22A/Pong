@@ -10,6 +10,8 @@ TagManager:
   - LeftBarrier
   - RightBarrier
   - Ball
+  - AiTrigger
+  - AiTrigger2
   layers:
   - Default
   - TransparentFX
