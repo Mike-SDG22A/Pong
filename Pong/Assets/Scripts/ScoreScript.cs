@@ -11,6 +11,7 @@ public class ScoreScript : MonoBehaviour
     public Text p2Text;
     public int totalScore = 0;
     public int spinScore = 5;
+    public SpinnerMode intSo;
     [SerializeField]
     Transform spawn;
     [SerializeField]
@@ -28,11 +29,14 @@ public class ScoreScript : MonoBehaviour
     }
     public void AddTotalScore() 
     {
-        totalScore++;
-        if (totalScore == spinScore)
-        {
-            Instantiate(spinner, spawn.position, spawn.rotation);
-        }
         
+        totalScore++;
+        if (intSo.intValue2 == 1)
+        {
+            if (totalScore == spinScore)
+            {
+                Instantiate(spinner, spawn.position, spawn.rotation);
+            }
+        } 
     }
 }

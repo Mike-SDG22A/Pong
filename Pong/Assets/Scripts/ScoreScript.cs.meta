@@ -6,9 +6,9 @@ MonoImporter:
   defaultReferences:
   - p1Text: {instanceID: 0}
   - p2Text: {instanceID: 0}
-  - Spinner: {fileID: 7070729785840719668, guid: 98377c97afdc58a46921a3fcad9cb2a6, type: 3}
-  - Tp1: {instanceID: 0}
-  - Tp2: {instanceID: 0}
+  - spinnerOn: {instanceID: 0}
+  - spawn: {instanceID: 0}
+  - spinner: {fileID: 7070729785840719668, guid: 98377c97afdc58a46921a3fcad9cb2a6, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
