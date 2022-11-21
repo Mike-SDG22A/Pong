@@ -522,6 +522,7 @@ MonoBehaviour:
   p2Text: {fileID: 1211941005}
   totalScore: 0
   spinScore: 5
+  intSo: {fileID: 0}
   spawn: {fileID: 276955106}
   spinner: {fileID: 7070729785840719668, guid: 98377c97afdc58a46921a3fcad9cb2a6, type: 3}
 --- !u!114 &545169258
@@ -553,7 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
