@@ -9,9 +9,11 @@ public class Ball : MonoBehaviour
     private Vector2 BallDirection;
     private float DefaultMoveSpeed = 20f;
     public ParticleSystem collisionParticleSystem;
+    Rigidbody2D rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         BallDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         if (BallDirection.x > -0.2f && BallDirection.x < 0.2f) 
         {
@@ -22,7 +24,7 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(BallDirection * MoveSpeed * Time.deltaTime);
+        rb.AddForce(BallDirection, ForceMode2D.Force);
     }
 
     private void OnCollisionEnter2D(Collision2D Collision) 
@@ -31,13 +33,13 @@ public class Ball : MonoBehaviour
 
         if (Collision.gameObject.CompareTag("Wall"))
         {
-            BallDirection = Vector2.Reflect(BallDirection, Collision.contacts[0].normal);
+            BallDirection = Vector2.Reflect(BallDirection, Collision.contacts[0].normal).normalized;
             em.enabled = true;
             collisionParticleSystem.Play();
         }
         if (Collision.gameObject.CompareTag("Paddle"))
         {
-            BallDirection = Vector2.Reflect(BallDirection, Collision.contacts[0].normal);
+            BallDirection = Vector2.Reflect(BallDirection, Collision.contacts[0].normal).normalized;
             em.enabled = true;
             collisionParticleSystem.Play();
             MoveSpeed = MoveSpeed * MoveSpeedIncrease;

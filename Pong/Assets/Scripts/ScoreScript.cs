@@ -16,6 +16,13 @@ public class ScoreScript : MonoBehaviour
     Transform spawn;
     [SerializeField]
     GameObject spinner;
+    [SerializeField] bool spinnerBool;
+    [SerializeField] SaveData save;
+
+    private void Start()
+    {
+       spinnerBool = save.GetBool("Spinner");
+    }
 
     public void AddP1Score()
     {
@@ -31,7 +38,7 @@ public class ScoreScript : MonoBehaviour
     {
         
         totalScore++;
-        if (intSo.intValue2 == 1)
+        if (spinnerBool)
         {
             if (totalScore == spinScore)
             {

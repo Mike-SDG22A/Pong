@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public bool spinner;
     private SpinnerMode intSo;
+    [SerializeField] SaveData save;
+
     public void MultiPlayer() 
     {
         SceneManager.LoadScene(1);
@@ -32,13 +33,6 @@ public class MainMenu : MonoBehaviour
 
     public void SpinnerMode(bool spinnerMode) 
     {
-        spinner = spinnerMode;
-        if (spinner == true) 
-        {
-            intSo.intValue2 = 1;
-        } else if (spinner == false) 
-        {
-            intSo.intValue2 = 0;
-        }
+        save.SaveBool(spinnerMode, "Spinner");
     }
 }
